@@ -1,0 +1,459 @@
+* {
+    margin: 0;
+    padding: 0;
+    }
+
+@font-face {
+    font-family: 'a Arbei Berry';
+    src: url("ArbeiBerry-rg3Ky.ttf") format('truetype'),
+         url("ArbeiBerry-YzXrO.otf") format('opentype');
+    }
+
+@font-face {
+    font-family: 'a Apple Tea';
+    src: url("AppleTea-z8R1a.ttf") format('truetype'),
+             url("AppleTea-jELql.otf") format('opentype');
+        }
+    
+body {
+      height: 100%;
+      width: 100%;
+      background-color: #BEB8EB;;
+      }
+
+h1 {margin: 0;
+    font-family: Felix Titling;
+    font-size: 4em;
+    color: #4C0827;
+}
+
+h2 {margin: 0;
+    font-family: Pristina;
+    font-size: 2em;
+    color: rgb(0, 0, 0);
+}
+
+h3 {font-family: Felix Titling;
+    font-size: 2.2em;
+    color: rgb(0, 0, 0);}
+
+h4 {font-family: Felix Titling; 
+    font-size: 2em;
+    color:#4C0827; }
+
+p {font-family: a Arbei Berry; 
+    font-size: 1.4em;
+    color: black;}
+
+button {display: block;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #439A86;
+        color: black;
+        font-family: a Apple Tea;
+        font-size: 1em;}
+        
+button:hover {background-color: #4C0827;
+              color: white;
+              cursor: pointer;
+             }
+
+header {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: 130px auto;
+        background-color: #F3F9D2;;
+        gap: 0;
+        padding-bottom: 4px;
+        margin:0;
+        }
+
+.logo {grid-row-start: 1;
+       grid-row-end: 3;
+       grid-column-start: 1;
+       grid-column-end: 1;
+       padding-top: 10px;
+       padding-left: 20px;
+       padding-bottom: 2px;
+       }
+
+#websiteLogo {height: 120px;
+              width: 120px;
+             }
+
+.title {grid-row-start: 1;
+        grid-row-end:2;
+        grid-column-start: 2;
+        grid-column-end:2;
+        align-items: left; 
+        padding-top: 10px;
+        padding-left: 20px;
+    }
+
+.tagline {grid-row-start: 2;
+          grid-row-end:3;
+          grid-column-start:2;
+          grid-column-end:3;
+          align-items: left;
+          padding-left: 20px;
+        }
+
+nav {height: 40px;
+     width: 100vw;
+     background-color: #439A86;
+           
+}
+
+nav ul li { display: inline-block;
+             font-family:a Apple Tea;
+             font-size: 1.5em;
+             padding-top: 7px;
+             padding-left: 20px;
+             padding-right: 20px;
+             color: white;
+             }
+
+nav ul li a {text-decoration: none;
+             color: white;
+             }
+
+nav ul li a:hover {background-color: #4C0827;
+                   color: white;
+                   padding: 8px;
+                }
+
+.webpageText {padding: 20px;
+              text-align: center;
+              margin-left: 50px;
+              margin-right: 50px;
+            }
+
+.footer ul li {display: inline-block;
+              font-family: Helvetica;
+              color: black;
+              justify-items: center;
+            }
+
+/* Chinese Zodiac Page Styles */
+
+#chineseZodiac {display: grid;
+                grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
+                grid-template-columns: auto;
+                justify-items: center;
+               }
+
+#chineseZodiacInfo {grid-row-start: 1;
+                    grid-row-end: 2;
+                    grid-column: span(1);
+                    }
+
+#chineseZodiacInfo button {margin: auto;}
+
+#chineseZodiacInOrder {grid-row-start: 2;
+                       grid-row-end: 3;
+                       grid-column: span(1);;
+                    }
+
+#displayArrayInOrder {grid-row-start: 3;
+                      grid-row-end: 4;
+                      grid-column: span(1);
+                      margin: 20px;
+                    }
+
+#chineseZodiacInReverse {grid-row-start: 4;
+                         grid-row-end: 5;
+                         grid-column: span(1);
+                    }
+           
+#displayArrayInReverse {grid-row-start: 5;
+                        grid-row-end: 6;
+                        grid-column: span(1);
+                        margin: 20px;
+                    }
+
+#userChineseZodiacSign {grid-row-start: 6;
+                        grid-row-end: 7;
+                        grid-column: span(1);              
+                       }
+
+#userBirthYearInput {grid-row-start: 7;
+                     grid-row-end: 8;
+                     grid-column: span(1);              
+                        }
+
+#userBirthYearInput input {height: 50px;
+                           width: 90px;
+                           text-align: center;
+                           font-family: a Apple Tea;
+                           font-size: 1.5em;
+                           color: black;
+                        }
+
+#userBirthYearOutput {grid-row-start: 8;
+                      grid-row-end: 9;
+                      grid-column: span(1);
+                     }
+
+#zodiacSignImage {grid-row-start: 9;
+                  grid-row-end: 10;
+                  grid-column: span(1);
+                  }
+
+
+/* Life Path Number Page Styles */
+
+label {font-family: a Arbei Berry; 
+    font-size: 1.4em;
+    color: black;}
+
+#lifePathNumber {display: grid;
+                 grid-template-rows: auto auto auto auto auto;
+                 grid-template-columns: auto;
+                 justify-items: center;
+            }
+
+#lifePathNumberInfo {grid-row-start: 1;
+                     grid-row-end: 2;
+                     grid-column-start: 1;
+                     grid-column-end: 1;
+                     }
+
+#findYourLifeNumberHeading  {grid-row-start: 2;
+                             grid-row-end: 3;
+                             grid-column-start: 1;
+                             grid-column-end: 1;
+                             }
+
+#userBirthdateInput {grid-row-start: 3;
+                      grid-row-end: 4;
+                      grid-column-start: 1;
+                      grid-column-end: 1;
+                    }
+
+#userBirthdateInput input {height: 50px;
+                           width: 90px;
+                           text-align: center;
+                           justify-items: center;
+                           font-family: a Apple Tea;
+                           font-size: 1.5em;
+                           color: black;
+}
+
+#userBirthdateInput button {margin:auto;}
+
+#userLifePathNumberOutput {grid-row-start: 4;
+                           grid-row-end: 5;
+                           grid-column-start: 1;
+                           grid-column-end: 1;
+                           }
+
+/* Tarot Card Reading Page */
+
+#goBack {display:block;
+         float: left;
+         margin-left: 5px;
+         margin-top: 5px;
+         padding: 20px;
+         border: none;
+         border-radius: 2px;
+         background-color: #324A5F ;
+         color: white;
+
+}
+
+#goForward {display:block;
+            float: right;
+            margin-right: 5px;
+            margin-top: 5px;
+            padding: 20px;
+            border: none;
+            border-radius: 2px;
+            background-color: #324A5F ;
+            color: white;
+
+}
+
+#tarotCardBack {height: 350px;
+                width: 200px;
+                }
+
+#tarotCardInfoDisplay {font-family: a Arbei Berry; 
+                       font-size: 1.4em;
+                       color: black;}
+
+#tarotCardReading {display: grid;
+                   grid-template-rows: auto auto auto auto auto auto;
+                   grid-template-columns: 30% 70%;
+                   }
+
+#tarotCardInfo {grid-row-start: 1;
+                grid-row-end: 2;
+                grid-column-start: 1;
+                grid-column-end: 3;
+               }
+
+#freeTarotCardReadingTitle {grid-row-start: 2;
+                            grid-row-end: 3;
+                            grid-column-start: 1;
+                            grid-column-end: 3;
+                            }  
+
+#dailyTarotCard {grid-row-start: 3;
+                grid-row-end: 5;
+                grid-column-start: 1;
+                grid-column-end: 2;
+                align-items: center;
+                justify-items: center;
+                margin-left: 200px;
+                padding-right: 40px
+                    }     
+            
+#tarotCardInfoTitle   {grid-row-start: 3;
+                       grid-row-end: 4;
+                       grid-column-start: 2;
+                       grid-column-end: 3;
+                       height:50px;
+                      }  
+    
+#tarotCardInfoDisplay {grid-row-start: 4;
+                       grid-row-end: 5;
+                       grid-column-start: 2;
+                       grid-column-end: 3;
+                       padding-left: 100px;
+                       padding-right: 100px;
+                      }  
+
+#toggleMeaningsButtons {grid-row-start: 5;
+                        grid-row-end: 6;
+                        grid-column-start: 1;
+                        grid-column-end: 2;
+                        visibility: hidden;
+                        display: inline-flex;
+                        margin-left: 150px;
+                    }
+
+#toggleMeaningsButtons button {margin-left: 35px;
+                    }
+
+#newCardButton {grid-row-start: 5;
+                grid-row-end: 6;
+                grid-column-start: 2;
+                grid-column-end: 3;
+                visibility: hidden;
+                margin-left: 250px;
+                    }   
+
+/* Crystal Ball page styles */
+
+#crystalBallReading {display: grid;
+                     grid-template-rows: auto auto auto auto auto auto;
+                     grid-template-columns: auto;        
+                    }
+
+#crystalBallInfo {grid-row-start: 1;
+                  grid-row-end: 2;
+                  grid-column: span(1);
+                  }
+            
+#crystalBallReadingTitle {grid-row-start: 2;
+                          grid-row-end: 3;
+                          grid-column: span(1);
+                          }
+
+#crystalBallImage {grid-row-start: 3;
+                   grid-row-end: 4;
+                   grid-column: span(1);
+                   position: relative;
+                    }
+
+#crystalBallImage img {height: 400px;
+                       width: 350px;
+                      
+                       }
+
+#questionAnswer {position: absolute;
+                 top: 40%;
+                 left: 20%;
+                 font-size: 2em;
+                 color: white;
+                text-shadow: 0 0 15px rgb(0, 0, 0);
+}
+
+#userQuestionToCrystalBall {grid-row-start: 3;
+                            grid-row-end: 4;
+                            grid-column: span(1);
+                            }
+                            
+#userQuestionToCrystalBall input {height: 50px;
+                                 width: 500px;
+                                 text-align: center;
+                                 justify-items: center;
+                                 font-family: a Apple Tea;
+                                 font-size: 1.5em;
+                                 color: black;
+                                 margin-bottom: 20px;
+                                 }
+
+#submitQuestion {grid-row-start: 4;
+                grid-row-end: 5;
+                grid-column: span(1);
+               }
+
+#submitQuestion button {margin: auto;
+                        }
+
+/* Dice page styles */
+
+#diceRolling {display: grid;
+              grid-template-rows: auto auto auto;
+              grid-template-columns: 1fr 1fr;
+            }
+
+#fortuneTellingDiceInfo {grid-row-start: 1;
+                         grid-row-end: 2;
+                         grid-column-start: 1;
+                         grid-column-end: 3;
+
+                        }
+
+#numericalDiceContainer {grid-row-start: 2;
+                         grid-row-end: 3;
+                         grid-column-start: 1;
+                         grid-column-end: 2;
+                         display:inline-block;
+                         margin-right: 100px;
+                         }
+
+#fortuneDiceContainer {grid-row-start: 2;
+                       grid-row-end: 3;
+                       grid-column-start: 2;
+                       grid-column-end: 3;
+                       display:inline-block;
+                       margin-left: 100px;
+                       }
+
+#numericalDiceRoll {margin:auto;}
+
+#fortuneDiceRoll {margin: auto;}
+
+#lotteryNumberPicker {grid-row-start: 3;
+                      grid-row-end: 4;
+                      grid-column-start: 1;
+                      grid-column-end: 3;
+                    }
+
+#lotteryNumberButton {margin: auto;}
+
+/* Browser Compatibility Check styles */
+
+#browserCompatibilityButton {display: block;
+    float: right;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background-color: #4C0827;
+    color: #F3F9D2;
+   }
+
+#browserCompatibilityButton:hover {background-color: #880000;}
+
+#checkLastestBroswerVersionButton {margin: auto;}

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<!--
+Copyright: Copyright, Sasha Kilaire, 2023, All Rights Reserved
+Version: 1.0
+Date Created: 01/10/2023
+-->
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sasha Kilaire">
+    <meta name="description" content="Find out your zodiac sign, life path number, and get a free tarot reading">
+    
+    <link rel="stylesheet" type="text/css" href="styles.css">
+   
+    <title> Tarot Card Reading </title>
+
+</head>
+
+<body>
+
+    <header> 
+        <div class="logo"> <img id="websiteLogo" src="FortuneTellerLogo.png" alt="Fortune Teller Logo"> </div>
+        <div class="title"> <h1> Online Fortune Teller </h1> </div>
+        <div class="tagline"> <h2> What does the future hold for you? </h2> </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li> <a href="index.html"> Home </a> </li>
+            <li> <a href="ChineseZodiac.html"> Chinese Zodiac </a> </li>
+            <li> <a href="LifePathNumber.html"> Life Path Number </a> </li>
+            <li> <a href="TarotCardReading.html"> Tarot Card Reading </a> </li>
+            <li> <a href="CrystalBall.html"> Crystal Ball </a> </li>
+            <li> <a href="Dice.html"> Dice </a> </li>
+        </ul>
+   </nav>
+   
+   <div id="navigationButtons">
+        <button id="goBack" onclick="historyBack()"> &#60; </button>
+        <button id="goForward" onclick="historyForward()"> &#62; </button>
+   </div>
+
+   <section id="tarotCardReading">
+    <div class="webpageText" id="tarotCardInfo">
+        <h3> What are Tarot Cards? </h3>
+        <br><br>
+        <p> Tarot cards are a centuries-old form of divination and guidance. A tarot deck consists of 78 cards, each with its unique symbolism 
+            and meaning. Tarot readings are used to gain insights into various aspects of life, including love, career, and personal development.
+             In a typical reading, a reader draws a set number of cards and interprets their symbolism to provide guidance and answers to your 
+             questions. Tarot readings can be a powerful tool for introspection and seeking guidance when faced with life's uncertainties.
+        </p>  
+    </div>
+    <div class="webpageText" id="freeTarotCardReadingTitle">
+        <h3> Click the deck below to get your free daily tarot card reading </h3>
+        <br><br>
+    </div>
+        <div id="dailyTarotCard">
+            <img id="tarotCardBack" 
+                src="tarotCardBacking.jpg" 
+                alt="Tarot Card" 
+                onclick="revealTarotCard()">
+        </div>
+        <div class="webpageText" id="tarotCardInfoTitle">
+        </div>
+            <div class="webpageText" id="tarotCardInfoDisplay">
+            </div>
+        <div class="webpageText" id="newCardButton">
+            <button id="getNewCard" onclick="getNewTarotCard()"> Get a new general daily card reading </button>
+        </div>
+        <div class="webpageText" id="toggleMeaningsButtons">
+            <button id="changeToFinanceTarotCardArray" onclick="financeTarotCardMeaning()"> Financial Reading </button>
+            <button id="changeToLoveTarotCardArray" onclick="loveTarotCardMeaning()"> Love Reading </button>
+        </div>
+
+</section>
+
+    <div id="troubleshootingButton">
+    <button id="browserCompatibilityButton" onclick="openBrowserCompatibilityWindow()"> Having trouble with this feature? </button>
+   </div>
+
+<div class="footer">
+    <ul>
+        <li> Privacy Policy </li>
+        <li> Terms of Use </li>
+        <li> About Us </li>
+        <li> Sitemap </li>
+        <li> Copyright 2023 All Rights Reserved </li>
+    </ul>
+</div>
+
+</body>
+
+<script>
+
+function historyBack() {
+    window.history.back();
+}
+
+function historyForward() {
+    window.history.forward();
+}
+
+//Image rollover creation
+function enlargeCardImage() {
+    var cardImage = document.getElementById("tarotCardBack");
+    cardImage.style.height = "450px";
+    cardImage.style.width = "250px";
+    cardImage.style.cursor = "pointer";
+}
+
+function shrinkCardImage() {
+    var cardImage = document.getElementById("tarotCardBack");
+    cardImage.style.height = "350px";
+    cardImage.style.width = "200px";
+}
+
+document.getElementById("tarotCardBack").addEventListener("mouseover", enlargeCardImage);
+document.getElementById("tarotCardBack").addEventListener("mouseout", shrinkCardImage);
+
+//Global variables
+//Prevent further clicks by adding card clicking condition 
+let cardClicked = false;
+
+function revealTarotCard() {
+    if (!cardClicked) {
+        var tarotCardBack = document.getElementById("tarotCardBack");
+        var userTarotCard = getRandomCard(generalTarotCardArray);
+        tarotCardBack.setAttribute("src", userTarotCard.imagePath);
+        document.getElementById("tarotCardInfoTitle").innerHTML = "<h4> What does this card mean? </h4>";
+        userTarotCard.displayCardInfo();
+        document.getElementById("newCardButton").style.visibility = "visible";
+        tarotCardIndex = 1;
+        cardClicked = true;
+        tarotCardBack.removeEventListener("mouseout", shrinkCardImage);
+        tarotCardBack.removeEventListener("mouseover", enlargeCardImage);
+        tarotCardBack.style.cursor = "default";
+        document.getElementById("toggleMeaningsButtons").style.visibility = "visible";
+    }
+
+}
+
+function getNewTarotCard() {
+    
+    var userTarotCard = getRandomCard(generalTarotCardArray);
+        tarotCardBack.setAttribute("src", userTarotCard.imagePath);
+        document.getElementById("tarotCardInfoTitle").innerHTML = "<h4> What does this card mean? </h4>";
+        userTarotCard.displayCardInfo();
+}
+
+function financeTarotCardMeaning() {
+
+    var userTarotCard = getRandomCard(financeTarotCardArray);
+        tarotCardBack.setAttribute("src", userTarotCard.imagePath);
+        document.getElementById("tarotCardInfoTitle").innerHTML = "<h4> What does this card mean? </h4>";
+        userTarotCard.displayCardInfo();
+}
+
+function loveTarotCardMeaning() {
+
+var userTarotCard = getRandomCard(loveTarotCardArray);
+    tarotCardBack.setAttribute("src", userTarotCard.imagePath);
+    document.getElementById("tarotCardInfoTitle").innerHTML = "<h4> What does this card mean? </h4>";
+    userTarotCard.displayCardInfo();
+}
+
+// Object constructor function
+function tarotCard(name, meaning, imagePath) {
+  this.name = name;
+  this.meaning = meaning;
+  this.imagePath = imagePath;
+}
+
+//Prototype property in object constructor function
+
+tarotCard.prototype.displayCardInfo = function () {
+
+    let cardInfo = `
+    Card name: ${this.name} <br>
+    Meaning of the card: ${this.meaning} <br>
+    `;
+
+    document.getElementById("tarotCardInfoDisplay").innerHTML = cardInfo;
+
+}
+
+//Add event listener to toggle previous card button visibility
+
+document.getElementById("getNewCard").addEventListener("click" , function () { 
+    
+    document.getElementById("previousCardButton").style.visibility = "visible";
+    getNewTarotCard();
+})
+
+// Create cards using the object function
+// Create client-side arrays using custom objects
+let generalTarotCardArray = [
+    new tarotCard("The Fool", "Embrace new beginnings and trust the journey of life.", "0TheFool.png"),
+    new tarotCard("The Magician", "Harness your talents and take action to manifest your desires.", "1TheMagician.png"),
+    new tarotCard("The High Priestess", "Seek inner wisdom and trust your instincts.", "2TheHighPriestess.png"),
+    new tarotCard("The Empress", "Embrace nurturing energy and enjoy the beauty of life's abundance.", "3TheEmpress.png"),
+    new tarotCard("The Emperor", "Exercise leadership and assertiveness in your endeavors.","4TheEmperor.png"),
+    new tarotCard("The Hierophant", "Embrace tradition and seek guidance from spiritual sources.", "5TheHierophant.png"),
+    new tarotCard("The Lovers", "Celebrate love, partnerships, and the union of opposites.", "6TheLovers.png"),
+    new tarotCard("The Chariot", "Focus on determination and control to achieve your goals.", "7TheChariot.png"),
+    new tarotCard("Strength", "Harness inner strength and courage to overcome challenges.", "8Strength.png"),
+    new tarotCard("The Hermit", "Take time for introspection and seek inner guidance.", "9TheHermit.png"),
+    new tarotCard("Wheel of Fortune", "Embrace the cycles of change and trust in fate.", "10WheelOfFortune.png"),
+    new tarotCard("Justice", "Seek fairness and balance in your actions and decisions.", "11Justice.png"),
+    new tarotCard("The Hanged Man", "Surrender to new perspectives and embrace sacrifice.", "12TheHangedMan.png"),
+    new tarotCard("Death", "Embrace transformation and let go of the past.", "13Death.png"),
+    new tarotCard("Temperance", "Strive for balance and moderation in all aspects of life.", "14Temperance.png"),
+    new tarotCard("The Devil", "Break free from attachments and face your inner demons.", "15TheDevil.png"),
+    new tarotCard("The Tower", "Embrace unexpected change as an opportunity for renewal.", "16TheTower.png"),
+    new tarotCard("The Star", "Have hope, inspiration, and faith in your dreams.", "17TheStar.png"),
+    new tarotCard("The Moon", "Navigate through illusions and trust your intuition.", "18TheMoon.png"),
+    new tarotCard("The Sun", "Bask in joy, warmth, and the radiance of success.", "19TheSun.png"),
+    new tarotCard("Judgement", "Embrace rebirth and renewal in all aspects of life.", "20Judgement.png"),
+    new tarotCard("The World",  "Celebrate completion, fulfillment, and wholeness.", "21TheWorld.png")
+];
+
+//Second Tarot card array for financial meanings
+
+let financeTarotCardArray = [
+new tarotCard("The Fool", "New investments and opportunities await. Take calculated risks for financial growth.", "0TheFool.png"),
+  new tarotCard("The Magician", "You have the power to manifest financial success. Use your skills and resources wisely.", "1TheMagician.png"),
+  new tarotCard("The High Priestess", "Trust your intuition in financial matters. Hidden opportunities may be revealed.", "2TheHighPriestess.png"),
+  new tarotCard("The Empress", "Abundance and financial stability are on the horizon. Nurture your financial endeavors.", "3TheEmpress.png"),
+  new tarotCard("The Emperor", "Take charge of your finances and exercise authority in financial decisions.", "4TheEmperor.png"),
+  new tarotCard("The Hierophant", "Traditional approaches to finance may be beneficial. Seek guidance from experts.", "5TheHierophant.png"),
+  new tarotCard("The Lovers", "Important financial decisions may involve a choice. Choose wisely for financial harmony.", "6TheLovers.png"),
+  new tarotCard("The Chariot", "Drive and determination will lead to financial victory and success.", "7TheChariot.png"),
+  new tarotCard("Strength", "Overcome financial challenges with inner strength and courage.", "8Strength.png"),
+  new tarotCard("The Hermit", "Take time for introspection in financial matters. Solitude may lead to financial wisdom.", "9TheHermit.png"),
+  new tarotCard("Wheel of Fortune", "Cycles of financial change are occurring. Embrace change with optimism.", "10WheelOfFortune.png"),
+  new tarotCard("Justice", "Fairness and balance will prevail in financial matters. Legal matters may be resolved.", "11Justice.png"),
+  new tarotCard("The Hanged Man", "Sacrifices may be necessary for financial growth. Be patient and gain a new perspective.", "12TheHangedMan.png"),
+  new tarotCard("Death", "Financial transformation is at hand. Embrace the end of old financial patterns.", "13Death.png"),
+  new tarotCard("Temperance", "Balance and moderation are key to financial success. Harmonize your financial resources.", "14Temperance.png"),
+  new tarotCard("The Devil", "Be cautious of financial traps and addictions. Break free from financial bondage.", "15TheDevil.png"),
+  new tarotCard("The Tower", "Financial disruption is occurring. Embrace change as an opportunity for financial renewal.", "16TheTower.png"),
+  new tarotCard("The Star", "Hope and inspiration lead to financial success. Trust in your financial dreams.", "17TheStar.png"),
+  new tarotCard("The Moon", "Beware of financial illusions and hidden factors. Seek clarity in financial matters.", "18TheMoon.png"),
+  new tarotCard("The Sun", "Financial joy and abundance are shining upon you. Bask in financial success.", "19TheSun.png"),
+  new tarotCard("Judgement", "A financial rebirth and renewal are at hand. Embrace a fresh start in your finances.", "20Judgement.png"),
+  new tarotCard("The World", "Financial completion and fulfillment are within reach. Celebrate your financial achievements.", "21TheWorld.png")
+];
+
+// Third Tarot card array for love meanings
+
+let loveTarotCardArray = [
+  new tarotCard("The Fool", "A new journey of love and exploration begins. Take risks in matters of the heart.", "0TheFool.png"),
+  new tarotCard("The Magician", "You have the power to manifest love and connection. Use your skills to enhance your relationships.", "1TheMagician.png"),
+  new tarotCard("The High Priestess", "Trust your intuition in matters of love. Hidden feelings and opportunities may be revealed.", "2TheHighPriestess.png"),
+  new tarotCard("The Empress", "Love and abundance flourish in your relationships. Nurture and cherish your romantic connections.", "3TheEmpress.png"),
+  new tarotCard("The Emperor", "Exercise authority and leadership in matters of love. Assertiveness leads to harmonious partnerships.", "4TheEmperor.png"),
+  new tarotCard("The Hierophant", "Traditional values and commitment are essential in your love life. Seek guidance from trusted sources.", "5TheHierophant.png"),
+  new tarotCard("The Lovers", "Celebrate love, partnerships, and deep connections with your significant other.", "6TheLovers.png"),
+  new tarotCard("The Chariot", "Determination and control are key to success in your love life. Drive your relationships toward victory.", "7TheChariot.png"),
+  new tarotCard("Strength", "Harness inner strength and courage to overcome challenges in love. Let love conquer all obstacles.", "8Strength.png"),
+  new tarotCard("The Hermit", "Take time for introspection in matters of the heart. Solitude may lead to profound insights about love.", "9TheHermit.png"),
+  new tarotCard("Wheel of Fortune", "Cycles of change are affecting your love life. Embrace change with optimism for the better.", "10WheelOfFortune.png"),
+  new tarotCard("Justice", "Seek fairness and balance in your love relationships. Legal or contractual matters may be involved.", "11Justice.png"),
+  new tarotCard("The Hanged Man", "Sacrifice and surrender may be necessary for deeper love and understanding. See love from a new perspective.", "12TheHangedMan.png"),
+  new tarotCard("Death", "A transformation in your love life is occurring. Embrace the end of old patterns for new love to emerge.", "13Death.png"),
+  new tarotCard("Temperance", "Strive for balance and harmony in your love connections. Blend patience and love for greater fulfillment.", "14Temperance.png"),
+  new tarotCard("The Devil", "Break free from toxic attachments and addictions in love. Reclaim your freedom and happiness.", "15TheDevil.png"),
+  new tarotCard("The Tower", "Sudden changes and disruptions may transform your love life. Embrace upheaval for a fresh start in love.", "16TheTower.png"),
+  new tarotCard("The Star", "Hope, inspiration, and faith guide your love life. Trust in your dreams for a fulfilling romantic journey.", "17TheStar.png"),
+  new tarotCard("The Moon", "Navigate through love's illusions and hidden emotions. Trust your intuition for deeper love connections.", "18TheMoon.png"),
+  new tarotCard("The Sun", "Bask in the warmth and radiance of love's joy and abundance. Love is shining upon you.", "19TheSun.png"),
+  new tarotCard("Judgement", "A rebirth and renewal in your love life are at hand. Embrace a second chance for love.", "20Judgement.png"),
+  new tarotCard("The World", "Celebrate completion and fulfillment in your love relationships. Love is whole and harmonious.", "21TheWorld.png")
+];
+
+// Function to choose a random card from the array
+function getRandomCard(generalTarotCardArray) {
+  const randomIndex = Math.floor(Math.random() * generalTarotCardArray.length);
+  return generalTarotCardArray[randomIndex];
+}
+
+function openBrowserCompatibilityWindow() {
+
+var browserCompatibilityWindow = window.open("BrowserCompatibility.html", "Check Browser Compatibility", "height=500, width=1200");
+browserCompatibilityWindow.focus();
+}
+
+</script>

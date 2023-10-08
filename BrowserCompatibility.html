@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+Copyright: Copyright, Sasha Kilaire, 2023, All Rights Reserved
+Version: 1.0
+Date Created: 01/10/2023
+-->
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sasha Kilaire">
+    <meta name="description" content="Find out your zodiac sign, life path number, and get a free tarot reading">
+    
+    <link rel="stylesheet" type="text/css" href="styles.css">
+   
+    <title> Check Browser Compatibility </title>
+
+</head>
+
+<body>
+   
+    <section id="browserCompatibilityCheck">
+        <div class="webpageText" id="webpageIssueText">
+            <h3> Are you experiencing issues with our website features? </h3>
+            <br><br>
+                <p> It could be an issue with your browser. Our website is compatible with the latest versions of all major browsers, 
+                    so it could be that you need to update your browser in order to use our website's features correctly. To check your current
+                    browser version, click the button below.
+                <br>
+                <div class="webpageText" id="userCurrentBrowserVersion"> 
+                    <button type="button" id="checkLastestBroswerVersionButton" onclick="getCurrentBrowserInfo()"> Get my browser info </button> 
+                    <br>
+                    <p id="userCurrentBrowserVersionOutput">
+                    </p>
+                </div>      
+                <div class="webpageText" id="checkCurrentBrowserVersions">
+                    <h3> Check the latest browser versions </h3>
+                    <br><br>
+                    <p>To check the current versions of all major browsers, click the button below to be redirected to the latest browser versions 
+                        (redirects to a new website).
+                    </p>
+                    <br><br>
+                    <button type="button" id="checkLastestBroswerVersionButton" onclick="checkLatestBrowserVersions()"> Check current browser versions </button> 
+        </div>
+
+
+    </section>
+
+</body>
+
+<script>
+
+function checkLatestBrowserVersions() {
+
+    var currentURL = window.location.href;
+    location.replace("https://www.whatismybrowser.com/guides/the-latest-version/");
+
+}
+
+function getCurrentBrowserInfo() {
+    var browserInfo = window.navigator.userAgent;
+    document.getElementById("userCurrentBrowserVersionOutput").innerHTML = browserInfo;
+}
+
+</script>

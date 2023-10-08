@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<!--
+Copyright: Copyright, Sasha Kilaire, 2023, All Rights Reserved
+Version: 1.0
+Date Created: 01/10/2023
+-->
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sasha Kilaire">
+    <meta name="description" content="Find out your zodiac sign, life path number, and get a free tarot reading">
+    
+    <link rel="stylesheet" type="text/css" href="styles.css">
+   
+    <title> Chinese Zodiac </title>
+
+</head>
+
+<body>
+
+    <header> 
+        <div class="logo"> <img id="websiteLogo" src="FortuneTellerLogo.png" alt="Fortune Teller Logo"> </div>
+        <div class="title"> <h1> Online Fortune Teller </h1> </div>
+        <div class="tagline"> <h2> What does the future hold for you? </h2> </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li> <a href="index.html"> Home </a> </li>
+            <li> <a href="ChineseZodiac.html"> Chinese Zodiac </a> </li>
+            <li> <a href="LifePathNumber.html"> Life Path Number </a> </li>
+            <li> <a href="TarotCardReading.html"> Tarot Card Reading </a> </li>
+            <li> <a href="CrystalBall.html"> Crystal Ball </a> </li>
+            <li> <a href="Dice.html"> Dice </a> </li>
+        </ul>
+   </nav>
+   
+   <div id="navigationButtons">
+        <button id="goBack" onclick="historyBack()"> &#60; </button>
+        <button id="goForward" onclick="historyForward()"> &#62; </button>
+   </div>
+
+   <section id="chineseZodiac">
+        <div class="webpageText" id="chineseZodiacInfo">
+            <h3> What is the Chinese Zodiac? </h3>
+            <br><br>
+            <p> The Chinese Zodiac is a fascinating system of astrology that has been used for centuries to gain insights into one's 
+                personality, characteristics, and life path. It is based on a 12-year cycle, with each year associated with a specific 
+                animal sign. These animal signs are Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, and Pig. 
+                Your Chinese Zodiac sign is determined by your birth year, and it can reveal a lot about your innate traits and tendencies.
+            <br><br>
+                The origin of the order of the animals comes from an ancient Chinese story known widely as "The Great Race." Click the button 
+                below to watch a video of this story (opens a new window).
+            </p>
+            <br>         
+                <button type="button" onclick="openYoutubeVideoWindow()"> Watch the story of Chinese New Year </button>
+            <br><br>
+            <h3 style="font-size: 2em;"> View the order of the Chinese Zodiac animals </h3> <br><br>
+        <div class="webpageText" id="chineseZodiacOrderButtons">
+            <button type="submit" id="chineseZodiacInOrder"> Chinese Zodiac Order </button>
+            <p id="displayArrayInOrder"></p>
+            <button type="submit" id="chineseZodiacInReverse"> Chinese Zodiac Reverse Order </button>
+            <p id="displayArrayInReverse"></p>
+        </div>
+        <div id="userChineseZodiacSign">
+                <h3> What's my sign? </h3>
+                <br><br>
+                <p> Enter your birth year below to discover what your Chinese Zodiac sign is:                
+                </p> 
+                <br>
+        </div>
+                    <div id="userBirthYearInput">
+                    <input type="number" min="1900" max="2023" id="userBirthYear">
+                    <br><br>
+                    <button type="submit" id="submitButton" onclick="calculateChineseZodiacSign()"> Get my Chinese Zodiac Sign </button>
+                    <br><br>
+            </div>
+
+            <div id="userZodiacSignOutput">
+            </div>
+            <div id="zodiacSignImage">
+            </div>
+
+   </section>
+
+   <div id="troubleshootingButton">
+    <button id="browserCompatibilityButton" onclick="openBrowserCompatibilityWindow()"> Having trouble with this feature? </button>
+   </div>
+
+<div class="footer">
+    <ul>
+        <li> Privacy Policy </li>
+        <li> Terms of Use </li>
+        <li> About Us </li>
+        <li> Sitemap </li>
+        <li> Copyright 2023 All Rights Reserved </li>
+    </ul>
+</div>
+
+</body>
+
+<script>
+
+function historyBack() {
+    window.history.back();
+}
+
+function historyForward() {
+    window.history.forward();
+}
+
+function openYoutubeVideoWindow() {
+
+   var openYoutubeVideo = window.open("https://youtu.be/WPWJQsbDuNA?si=Hj7bx8mqiWzAzBnC","Chinese Zodiac Animal Race Story", "height=500, width=600");
+   openYoutubeVideo.focus();
+
+}
+
+function viewChineseZodiacInOrder() {
+   
+    let chineseZodiacSigns = ["Rat       ", "Ox       ", "Tiger       ", "Rabbit   ", "Dragon   ", "Snake   ", "Horse   ", "Goat   ", "Monkey   ", "Rooster   ", "Dog   ", "Pig   "];
+    let arrayDisplayElement = document.getElementById("displayArrayInOrder");
+
+    for (let i = 0; i < chineseZodiacSigns.length; i++) {
+    arrayDisplayElement.append(chineseZodiacSigns[i].toString());
+    }
+
+    document.getElementById("chineseZodiacInOrder").removeEventListener("click", viewChineseZodiacInOrder);
+
+}
+
+document.getElementById("chineseZodiacInOrder").addEventListener("click", viewChineseZodiacInOrder);
+
+function viewChineseZodiacInReverse() {
+
+    let chineseZodiacSigns = ["Rat       ", "Ox       ", "Tiger       ", "Rabbit   ", "Dragon   ", "Snake   ", "Horse   ", "Goat   ", "Monkey   ", "Rooster   ", "Dog   ", "Pig   "];
+    let arrayDisplayElement = document.getElementById("displayArrayInReverse");
+
+    let reverseChineseZodiacSigns = chineseZodiacSigns.reverse();
+
+    for (let i = 0; i < reverseChineseZodiacSigns.length; i++) {
+    arrayDisplayElement.append(reverseChineseZodiacSigns[i].toString());
+    }
+
+    document.getElementById("chineseZodiacInReverse").removeEventListener("click", viewChineseZodiacInReverse)
+
+}
+
+document.getElementById("chineseZodiacInReverse").addEventListener("click", viewChineseZodiacInReverse);
+
+var image = document.createElement("IMG");
+function calculateChineseZodiacSign() {
+
+    //Retrieve the user input birth year
+    var birthYear = document.getElementById("userBirthYear").value;
+
+    //Put zodiac signs in an array in order
+    let chineseZodiacSigns = ["Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig"];
+    
+    // Calculate the index in the zodiacSigns array based on the input year
+    const zodiacIndex = (birthYear - 1900) % 12;
+
+    // Return an array value from the zodiac index
+    const userZodiacSign = chineseZodiacSigns[zodiacIndex];
+
+    // Display the answer to the user in the userZodiacSignOutput div
+    document.getElementById("userZodiacSignOutput").innerHTML =  `<h3> Your Chinese Zodiac Sign is <span style="color: #4C0827;"> the ${userZodiacSign} </span> </h3>`;
+
+    // Create img objects, manipulate the DOM and insert the corresponding zodiac image
+
+    var zodiacSignImageContainer = document.getElementById("zodiacSignImage");
+    var image = document.createElement("IMG");
+
+   //Switch statement and break statement
+   switch(zodiacIndex) {
+
+    case 0:
+        zodiacSignImageContainer.innerHTML="";
+        image.setAttribute("src" , "Rat.png");
+        image.setAttribute("height" , "450px");
+        image.setAttribute("width" , "500px");
+        zodiacSignImageContainer.append(image);
+        break;
+
+    case 1:
+        zodiacSignImageContainer.innerHTML="";
+        image.setAttribute("src" , "Ox.png");
+        image.setAttribute("height" , "450px");
+        image.setAttribute("width" , "500px");
+        zodiacSignImageContainer.append(image);
+        break;
+
+    case 2:
+        zodiacSignImageContainer.innerHTML="";
+        image.setAttribute("src" , "Tiger.png");
+        image.setAttribute("height" , "450px");
+        image.setAttribute("width" , "500px");
+        zodiacSignImageContainer.append(image);
+        break;
+
+    case 3:
+        zodiacSignImageContainer.innerHTML="";
+        image.setAttribute("src" , "Rabbit.png");
+        image.setAttribute("height" , "450px");
+        image.setAttribute("width" , "500px");
+        zodiacSignImageContainer.append(image);
+        break;
+
+    case 4:
+        zodiacSignImageContainer.innerHTML="";
+        image.setAttribute("src" , "Dragon.png");
+        image.setAttribute("height" , "450px");
+        image.setAttribute("width" , "500px");
+        zodiacSignImageContainer.append(image);
+        break;
+
+    case 5:
+        zodiacSignImageContainer.innerHTML="";
+        image.setAttribute("src" , "Snake.png");
+        image.setAttribute("height" , "450px");
+        image.setAttribute("width" , "500px");
+        zodiacSignImageContainer.append(image);
+        break;
+
+    case 6:
+        zodiacSignImageContainer.innerHTML="";
+        image.setAttribute("src" , "Horse.png");
+        image.setAttribute("height" , "450px");
+        image.setAttribute("width" , "500px");
+        zodiacSignImageContainer.append(image);
+        break;
+
+    case 7:
+        zodiacSignImageContainer.innerHTML="";
+        image.setAttribute("src" , "Goat.png");
+        image.setAttribute("height" , "450px");
+        image.setAttribute("width" , "500px");
+        zodiacSignImageContainer.append(image);
+        break;
+
+    case 8:
+        zodiacSignImageContainer.innerHTML="";
+        image.setAttribute("src" , "Monkey.png");
+        image.setAttribute("height" , "450px");
+        image.setAttribute("width" , "500px");
+        zodiacSignImageContainer.append(image);
+        break; 
+
+    case 9:
+        zodiacSignImageContainer.innerHTML="";
+        image.setAttribute("src" , "Rooster.png");
+        image.setAttribute("height" , "450px");
+        image.setAttribute("width" , "500px");
+        zodiacSignImageContainer.append(image);
+        break;
+        
+    case 10:
+        zodiacSignImageContainer.innerHTML="";
+        image.setAttribute("src" , "Dog.png");
+        image.setAttribute("height" , "450px");
+        image.setAttribute("width" , "500px");
+        zodiacSignImageContainer.append(image);
+        break;
+    
+    case 11:
+        zodiacSignImageContainer.innerHTML="";
+        image.setAttribute("src" , "Pig.png");
+        image.setAttribute("height" , "450px");
+        image.setAttribute("width" , "500px");
+        zodiacSignImageContainer.append(image);
+        break;
+
+    default: document.getElementById("userZodiacSignOutput").innerHTML =  `<h3 style="color:red;"> Oops, something went wrong. Please try again </h3> <br><br>`;
+}
+
+}
+
+function openBrowserCompatibilityWindow() {
+
+    var browserCompatibilityWindow = window.open("BrowserCompatibility.html", "Check Browser Compatibility", "height=500, width=1200");
+    browserCompatibilityWindow.focus();
+}
+
+</script>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--
+Copyright: Copyright, Sasha Kilaire, 2023, All Rights Reserved
+Version: 1.0
+Date Created: 01/10/2023
+-->
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sasha Kilaire">
+    <meta name="description" content="Find out your zodiac sign, life path number, and get a free tarot reading">
+    
+    <link rel="stylesheet" type="text/css" href="styles.css">
+   
+    <title> Dice </title>
+
+</head>
+
+<body>
+
+    <header> 
+        <div class="logo"> <img id="websiteLogo" src="FortuneTellerLogo.png" alt="Fortune Teller Logo"> </div>
+        <div class="title"> <h1> Online Fortune Teller </h1> </div>
+        <div class="tagline"> <h2> What does the future hold for you? </h2> </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li> <a href="index.html"> Home </a> </li>
+            <li> <a href="ChineseZodiac.html"> Chinese Zodiac </a> </li>
+            <li> <a href="LifePathNumber.html"> Life Path Number </a> </li>
+            <li> <a href="TarotCardReading.html"> Tarot Card Reading </a> </li>
+            <li> <a href="CrystalBall.html"> Crystal Ball </a> </li>
+            <li> <a href="Dice.html"> Dice </a> </li>
+        </ul>
+   </nav>
+   
+   <div id="navigationButtons">
+        <button id="goBack" onclick="historyBack()"> &#60; </button>
+        <button id="goForward" onclick="historyForward()"> &#62; </button>
+   </div>
+
+    <section id="diceRolling">
+        <div class="webpageText" id="fortuneTellingDiceInfo">
+            <h3> How dice are used in fortune telling </h3>
+            <br><br>
+            <p> In fortune telling, dice are often used as tools for divination, providing insights and guidance into various aspects of a 
+                person's life. Each side of the dice is associated with a specific meaning or symbol, and by rolling the dice, individuals 
+                seek answers to their questions or concerns. The outcome of the dice roll is interpreted by fortune tellers to offer advice, 
+                clarity, or predictions about the future. Dice-based fortune telling is a simple yet intriguing method that has been practiced 
+                in various cultures for centuries, offering a unique way to explore the mysteries of fate and destiny.
+            </p>
+            <br><br>
+            <div id="numericalDiceContainer">
+                <h3 id="numberDiceRollTitle"> Roll the number dice </h3>
+                <br>
+                <img id="numberDice1" src="diceBlank.png" alt="Blank Dice" height="100px" width="100px">
+                <img id="numberDice2" src="diceBlank.png" alt="Blank Dice" height="100px" width="100px">
+                <br><br>
+                <button type="button" id="numericalDiceRoll" onclick="rollNumericalDice()"> Roll the dice </button>
+                <br><br>
+                <p id="numberDiceOutput"> 
+                </p>
+     
+            </div>
+
+            <div id="fortuneDiceContainer">
+                <h3 id="fortuneDiceRollTitle"> Roll the fortune dice </h3>
+                <br>
+                <img id="fortuneDice1" src="diceBlank.png" alt="Blank Dice" height="100px" width="100px">
+                <img id="fortuneDice2" src="diceBlank.png" alt="Blank Dice" height="100px" width="100px">
+                <br><br>
+                <button type="button" id="fortuneDiceRoll" onclick="rollFortuneDice()"> Roll the dice </button>
+                <br><br>
+                <p id="fortuneDiceOutput">
+                </p>
+            </div>
+            <div class="webpageText" id="lotteryNumberPicker">
+                <h4> Lottery Number Picker </h4>
+                <br><br>
+                <p> Click the button below to get some lucky lottery numbers </p>
+                <br>
+                <button id="lotteryNumberButton" onclick="getLotteryNumbers()"> Get my lottery numbers </button>
+                <br>
+                <p id="lotteryNumberOutput">
+                </p>
+            </div>
+    </section>
+
+    <div id="troubleshootingButton">
+        <button id="browserCompatibilityButton" onclick="openBrowserCompatibilityWindow()"> Having trouble with this feature? </button>
+    </div>
+
+<div class="footer">
+    <ul>
+        <li> Privacy Policy </li>
+        <li> Terms of Use </li>
+        <li> About Us </li>
+        <li> Sitemap </li>
+        <li> Copyright 2023 All Rights Reserved </li>
+    </ul>
+</div>
+
+</body>
+
+<script>
+    
+function historyBack() {
+    window.history.back();
+}
+
+function historyForward() {
+    window.history.forward();
+}
+
+
+//obj constructor function for dice
+//create 2 dice - properties: individual sides (6), method 1: randomizer - make array of the sides
+
+function dice(sides, images) {
+  this.sides = sides;
+  this.images = images;
+}
+
+dice.prototype.diceRoll = function () {
+  const randomIndex = Math.floor(Math.random() * this.sides.length);
+  this.value = this.sides[randomIndex];
+  this.image = this.images[randomIndex];
+};
+
+dice.prototype.sumOfDice = function (dice2) {
+  return this.value + dice2.value;
+};
+
+
+const numericalDice1 = new dice();
+numericalDice1.sides = [1, 2, 3, 4, 5, 6];
+numericalDice1.images = ["numberDice1.png", "numberDice2.png", "numberDice3.png", "numberDice4.png", "numberDice5.png", "numberDice6.png"];
+
+const numericalDice2 = new dice();
+numericalDice2.sides = [1, 2, 3, 4, 5, 6];
+numericalDice2.images = ["numberDice1.png", "numberDice2.png", "numberDice3.png", "numberDice4.png", "numberDice5.png", "numberDice6.png"];
+
+const fortuneDice1 = new dice();
+fortuneDice1.sides = ["Danger", "Luck", "Abundance", "Peace", "Strife", "Fun"];
+fortuneDice1.images = ["fortuneDiceDanger.png", "fortuneDiceLuck.png", "fortuneDiceAbundance.png", "fortuneDicePeace.png", "fortuneDiceStrife.png", "fortuneDiceFun.png"];
+
+const fortuneDice2 = new dice();
+fortuneDice2.sides = ["Life", "Love", "Money", "Relationships", "The Near Future", "The Present"];
+fortuneDice2.images = ["fortuneDice2Life.png", "fortuneDice2Love.png", "fortuneDice2Money.png", "fortuneDice2Relationships.png", "fortuneDice2TheNearFuture.png", "fortuneDice2ThePresent.png"];
+
+
+
+function rollNumericalDice() {
+
+  numericalDice1.diceRoll();
+  numericalDice2.diceRoll();
+  const sum = numericalDice1.sumOfDice(numericalDice2);
+
+  document.getElementById("numberDice1").setAttribute("src", numericalDice1.image);
+  document.getElementById("numberDice2").setAttribute("src", numericalDice2.image);
+  document.getElementById("numberDiceOutput").innerHTML = "Your lucky number is: " + sum;
+}
+
+function rollFortuneDice() {
+
+fortuneDice1.diceRoll();
+fortuneDice2.diceRoll();
+
+
+document.getElementById("fortuneDice1").setAttribute("src", fortuneDice1.image);
+document.getElementById("fortuneDice2").setAttribute("src", fortuneDice2.image);
+document.getElementById("fortuneDiceOutput").innerHTML = "Your fortune is: " + fortuneDice1.value + " in " + fortuneDice2.value;
+
+}
+
+let lotteryNumberArray = [];
+
+
+function generateUniqueRandomNumber() {
+
+    let randomNumber = undefined;
+
+    do {
+        randomNumber = Math.floor(Math.random() * 50) + 1;
+    } 
+    
+    while (lotteryNumberArray.includes(randomNumber));
+        return randomNumber;
+}
+
+let clickStatus = false;
+
+function getLotteryNumbers() {
+
+    if (clickStatus === false) {
+        document.getElementById("lotteryNumberButton").innerHTML = "click again to clear these numbers";
+    do {
+        var uniqueNumber = generateUniqueRandomNumber();
+        lotteryNumberArray.push(uniqueNumber);
+        document.getElementById("lotteryNumberOutput").innerHTML = lotteryNumberArray;
+    }
+
+    while (lotteryNumberArray.length < 7);
+    clickStatus = true;
+}
+
+    else if (clickStatus === true) {
+        document.getElementById("lotteryNumberButton").innerHTML = "get my lottery numbers";
+        document.getElementById("lotteryNumberOutput").innerHTML = "";
+        lotteryNumberArray.splice(0, lotteryNumberArray.length);
+        clickStatus = false;
+    }
+}
+
+function openBrowserCompatibilityWindow() {
+
+var browserCompatibilityWindow = window.open("BrowserCompatibility.html", "Check Browser Compatibility", "height=500, width=1200");
+browserCompatibilityWindow.focus();
+}
+
+</script>

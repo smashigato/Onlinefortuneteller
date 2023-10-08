@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--
+Copyright: Copyright, Sasha Kilaire, 2023, All Rights Reserved
+Version: 1.0
+Date Created: 01/10/2023
+-->
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sasha Kilaire">
+    <meta name="description" content="Find out your zodiac sign, life path number, and get a free tarot reading">
+    
+    <link rel="stylesheet" type="text/css" href="styles.css">
+   
+    <title> Life Path Number </title>
+
+</head>
+
+<body>
+
+    <header> 
+        <div class="logo"> <img id="websiteLogo" src="FortuneTellerLogo.png" alt="Fortune Teller Logo"> </div>
+        <div class="title"> <h1> Online Fortune Teller </h1> </div>
+        <div class="tagline"> <h2> What does the future hold for you? </h2> </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li> <a href="index.html"> Home </a> </li>
+            <li> <a href="ChineseZodiac.html"> Chinese Zodiac </a> </li>
+            <li> <a href="LifePathNumber.html"> Life Path Number </a> </li>
+            <li> <a href="TarotCardReading.html"> Tarot Card Reading </a> </li>
+            <li> <a href="CrystalBall.html"> Crystal Ball </a> </li>
+            <li> <a href="Dice.html"> Dice </a> </li>
+        </ul>
+   </nav>
+   
+   <div id="navigationButtons">
+        <button id="goBack" onclick="historyBack()"> &#60; </button>
+        <button id="goForward" onclick="historyForward()"> &#62; </button>
+   </div>
+
+   <section id="lifePathNumber">
+        <div class="webpageText" id="lifePathNumberInfo">
+            <h3> What is a life path number? </h3>
+            <br><br>
+            <p> Your Life Path Number is a numerological calculation that offers profound insights into your life's purpose and journey. 
+                It is derived from your date of birth and is a single-digit number that represents the core essence of your existence. 
+                This number can help you understand your strengths, challenges, and the path you are destined to follow. It's a valuable tool 
+                for self-discovery and personal growth.
+            </p>  
+         </div>
+         <div class="webpageText" id="findYourLifeNumberHeading">
+            <h3> Find out your life path number! </h3>
+         </div>
+            <div class="webpageText" id="userBirthdateInput">
+                    <label for="userBirthDay1"> Enter the day you were born as two seperate digits:</label>
+                    <input type="number" min="0" max="3" id="userBirthDay1">
+                    <input type="number" min="0" max="9" id="userBirthDay2">
+                    <br><br>
+                    <label for="userBirthMonth1"> Enter the month you were born as two seperate digits:</label>
+                    <input type="number" min="0" max="1" id="userBirthMonth1">
+                    <input type="number" min="0" max="2" id="userBirthMonth2">
+                    <br><br>
+                    <label for="userBirthYear1"> Enter the year you were born as four seperate digits:</label>
+                    <input type="number" min="1" max="2" id="userBirthYear1">
+                    <input type="number" min="0" max="9" id="userBirthYear2">
+                    <input type="number" min="0" max="9" id="userBirthYear3">
+                    <input type="number" min="0" max="9" id="userBirthYear4">
+                    <br><br>
+                    <button type="submit" id="submitButton" onclick="calculateLifePathNumber()"> Get my life path number </button>
+                    <br><br>
+            </div>
+            <div id="userLifePathNumberOutput">
+            </div>
+</section>
+
+    <div id="troubleshootingButton">
+    <button id="browserCompatibilityButton" onclick="openBrowserCompatibilityWindow()"> Having trouble with this feature? </button>
+   </div>
+
+<div class="footer">
+    <ul>
+        <li> Privacy Policy </li>
+        <li> Terms of Use </li>
+        <li> About Us </li>
+        <li> Sitemap </li>
+        <li> Copyright 2023 All Rights Reserved </li>
+    </ul>
+</div>
+
+</body>
+
+<script>
+
+function historyBack() {
+    window.history.back();
+}
+
+function historyForward() {
+    window.history.forward();
+}
+
+// Function to calculate the sum of digits in a number until it becomes a single-digit number
+// charAt() method
+
+function calculateSingleDigit(number) {
+
+  // Convert the number to a string
+  var numberStr = number.toString();
+  
+  var sum = 0;
+
+  for (var i = 0; i < numberStr.length; i++) {
+    
+  // Use charAt() to access individual digits as strings, then convert them back to numbers
+    sum += parseInt(numberStr.charAt(i));
+  }
+  
+  return sum;
+}
+
+
+function calculateLifePathNumber() {
+
+// With statement
+with (document) {
+var d1 = parseInt(getElementById("userBirthDay1").value);
+var d2 = parseInt(getElementById("userBirthDay2").value);
+var m1 = parseInt(getElementById("userBirthMonth1").value);
+var m2 = parseInt(getElementById("userBirthMonth2").value);
+var y1 = parseInt(getElementById("userBirthYear1").value);
+var y2 = parseInt(getElementById("userBirthYear2").value);
+var y3 = parseInt(getElementById("userBirthYear3").value);
+var y4 = parseInt(getElementById("userBirthYear4").value);
+}
+
+//if statement
+if (isNaN(d1) || isNaN(d2) || isNaN(m1) || isNaN(m2) || isNaN(y1) || isNaN(y2) || isNaN(y3) || isNaN(y4)) {
+    alert("Please make sure you have filled in all fields correctly and try again");
+}
+
+//Sum up all of the numbers as a life path number
+var userLifePathNumber = d1 + d2 + m1 + m2 + y1 + y2 + y3 + y4;
+
+//if the two-digit result returns 11, 22, or 33, these are special cases where the life path numbers are two digits
+
+if (userLifePathNumber === 11 || userLifePathNumber === 22 || userLifePathNumber === 33) {
+
+    document.getElementById("userLifePathNumberOutput").innerHTML = `<h3> Your life path number is <span style="color: #4C0827;"> ${userLifePathNumber} </span> </h3><br><br>`;
+
+}
+
+else {
+    
+// while statement
+    while (userLifePathNumber > 9) {
+        userLifePathNumber = calculateSingleDigit(userLifePathNumber);
+    }
+
+document.getElementById("userLifePathNumberOutput").innerHTML = `<h3> Your life path number is <span style="color: #4C0827;"> ${userLifePathNumber} </span> </h3><br><br>`;
+
+}
+}
+
+function openBrowserCompatibilityWindow() {
+
+var browserCompatibilityWindow = window.open("BrowserCompatibility.html", "Check Browser Compatibility", "height=500, width=1200");
+browserCompatibilityWindow.focus();
+}
+
+</script>

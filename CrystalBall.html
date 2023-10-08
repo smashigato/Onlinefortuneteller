@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!--
+Copyright: Copyright, Sasha Kilaire, 2023, All Rights Reserved
+Version: 1.0
+Date Created: 01/10/2023
+-->
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sasha Kilaire">
+    <meta name="description" content="Find out your zodiac sign, life path number, and get a free tarot reading">
+    
+    <link rel="stylesheet" type="text/css" href="styles.css">
+   
+    <title> Crystal Ball </title>
+
+</head>
+
+<body>
+
+    <header> 
+        <div class="logo"> <img id="websiteLogo" src="FortuneTellerLogo.png" alt="Fortune Teller Logo"> </div>
+        <div class="title"> <h1> Online Fortune Teller </h1> </div>
+        <div class="tagline"> <h2> What does the future hold for you? </h2> </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li> <a href="index.html"> Home </a> </li>
+            <li> <a href="ChineseZodiac.html"> Chinese Zodiac </a> </li>
+            <li> <a href="LifePathNumber.html"> Life Path Number </a> </li>
+            <li> <a href="TarotCardReading.html"> Tarot Card Reading </a> </li>
+            <li> <a href="CrystalBall.html"> Crystal Ball </a> </li>
+            <li> <a href="Dice.html"> Dice </a> </li>
+        </ul>
+   </nav>
+   
+   <div id="navigationButtons">
+        <button id="goBack" onclick="historyBack()"> &#60; </button>
+        <button id="goForward" onclick="historyForward()"> &#62; </button>
+   </div>
+
+    <section id="crystalBallReading">
+        <div class="webpageText" id="c">
+            <h3> Crystal Balls </h3>
+            <br><br>
+            <p> Crystal balls, often associated with mysticism and divination, are captivating and intriguing spherical objects that have 
+                fascinated humans for centuries. These translucent or transparent orbs, typically made of crystal or glass, hold a profound 
+                allure due to their historical use in practices like scrying and meditation. Join us as we delve into the enchanting world 
+                of crystal balls and explore their timeless mystique.
+            </p>
+            <br><br>
+        <div id="crystalBallReadingTitle">
+            <h3> Ask a question to the Crystal Ball </h3>
+            <br><br>
+            <p> When asking a question, it is important to be clear on the type of answer you are looking for. Use "Should I ..." to ask for 
+                help making a decision, "When is a good time to..." to receive guidance on timing, and "Will I ... " for answers about your 
+                future.
+            </p>
+            <br><br>
+        </div>
+        <div id="crystalBallImage">
+            <img src="CrystalBall.png">
+            <p id="questionAnswer">
+            </p>
+        </div>
+        <div id="userQuestionToCrystalBall">
+            <input type="text" id="userQuestionInput" placeholder="Should I ...">
+        </div>
+        <div id="submitQuestion">
+            <button type="submit" id="submitButton" onclick="askQuestion()"> Ask my Question </button>
+        </div>
+    </section>
+
+        <div id="troubleshootingButton">
+        <button id="browserCompatibilityButton" onclick="openBrowserCompatibilityWindow()"> Having trouble with this feature? </button>
+       </div>
+
+<div class="footer">
+    <ul>
+        <li> Privacy Policy </li>
+        <li> Terms of Use </li>
+        <li> About Us </li>
+        <li> Sitemap </li>
+        <li> Copyright 2023 All Rights Reserved </li>
+    </ul>
+</div>
+
+</body>
+
+<script>
+    
+function historyBack() {
+    window.history.back();
+}
+
+function historyForward() {
+    window.history.forward();
+}
+
+//Create custom object with two properties and two methods
+        // Create a Crystal Ball object
+        var crystalBall = {
+             
+            shouldIAnswers: ["Yes, you should definitely do it!" , 
+                            "No, you shouldn't even think about it.", 
+                            "You need to wait for more information before making this decision."],
+
+            whenIsAGoodTimeToAnswers: ["Now is a good time.", 
+                                        "In the next few months",
+                                        "In the next few years", 
+                                        "It's very unlikely there will ever be a good time for this.",
+                                        "There are plenty of opportunities on the horizon."],
+
+            willIAnswers: ["Yes, you will.", 
+                            "No, you won't." , 
+                            "It's too early to tell." , 
+                            "It is possible with a lot of effort.", 
+                            "It doesn't look like this is ever going to happen, sorry."],
+
+// Evaluate strings from user input to determine function for crystal ball answer
+            generateQuestionAnswer: function (userQuestion) {
+                if (userQuestion.startsWith("should i") && userQuestion.endsWith("?")) {
+                    return this.getRandomAnswer(this.shouldIAnswers);
+                } else if (userQuestion.startsWith("when is a good time to") && userQuestion.endsWith("?")) {
+                    return this.getRandomAnswer(this.whenIsAGoodTimeToAnswers);
+                } else if (userQuestion.startsWith("will i") && userQuestion.endsWith("?")) {
+                    return this.getRandomAnswer(this.willIAnswers);
+                }  else if (userQuestion.search(/\?/) === -1) {
+                    return "Make sure your question contains a question mark";
+                }
+                  else {
+                    return "I'm not sure what you're asking. Make sure your question follows the given examples above and ends with a question mark";
+                }
+            },
+
+            getRandomAnswer: function (answersArray) {
+                var randomIndex = Math.floor(Math.random() * answersArray.length);
+                return answersArray[randomIndex];
+            }
+        };
+
+
+function askQuestion() {
+    var questionInput = document.getElementById("userQuestionInput");
+    var answerElement = document.getElementById("questionAnswer");
+
+    var userQuestion = questionInput.value.trim().toLowerCase();
+
+    if (userQuestion !== "") {
+                var answer = crystalBall.generateQuestionAnswer(userQuestion);
+                answerElement.innerHTML = answer;
+            } 
+    else {
+            answerElement.innerHTML = "<h3> Please enter a question.</h3>";
+            }
+        }
+
+function openBrowserCompatibilityWindow() {
+
+var browserCompatibilityWindow = window.open("BrowserCompatibility.html", "Check Browser Compatibility", "height=500, width=1200");
+browserCompatibilityWindow.focus();
+}
+
+</script>
